@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, TextInput} from 'react-native';
+import {Platform, StyleSheet, Text, View, TextInput, Button} from 'react-native';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -33,6 +33,7 @@ export default class App extends Component<Props> {
         value={this.state.placeName}
         onChangeText={this.placeNameChangedHandler}
         />
+        <Button title="add"/>
       </View>
     );
   }
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
   },
 
   textBorder: {
-    width: 300, 
+    width: 200, 
     borderColor:"black", 
     borderWidth: 1}
 });
