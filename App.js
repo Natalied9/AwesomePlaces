@@ -9,7 +9,8 @@ const instructions = Platform.select({
 type Props = {};
 export default class App extends Component<Props> {
   state= {
-    placeName: ''
+    placeName: '',
+    places: []
   };
 
   //creates a method so this keyword applies to the class above. user types in value 
@@ -20,7 +21,23 @@ export default class App extends Component<Props> {
     });
   }
 
+    placeSubmitHandler = () => {
+      if (this.state.placeName.trim() === "") {
+        return;
+      }
+
+      this.setState(prevState => {
+        return {
+          places: prevState.places.concat(prevState.placeName)
+        };
+      });
+    };
+
   render() {
+    const placesOutput = this.state.places.map(place => 
+      <Text>{place} </Text>
+      );
+
     return (
       <View style={styles.container}>
       <View style={styles.inputContainer}>
@@ -30,7 +47,16 @@ export default class App extends Component<Props> {
         value={this.state.placeName}
         onChangeText={this.placeNameChangedHandler}
         />
-        <Button title="add"/>
+        <Button 
+        title="add"
+        style={styles.placeButton}
+        onPress={this.placeSubmitHandler}
+        />
+        </View>
+
+        <View>
+        {placesOutput}
+
         </View>
       </View>
     );
@@ -56,4 +82,6 @@ const styles = StyleSheet.create({
       flexDirection: "row",
       justifyContent: "space-between"
     }
+
+    
 });
