@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, TextInput, Button} from 'react-native';
 
+import ListItem from './src/components/ListItem/ListItem';
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
 
@@ -35,7 +36,7 @@ export default class App extends Component<Props> {
 
   render() {
     const placesOutput = this.state.places.map((place, i) => (
-      <Text key={i}>{place} </Text>
+      <ListItem key={i} placeName={place} />
      ));
 
     return (
