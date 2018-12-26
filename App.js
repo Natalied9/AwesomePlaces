@@ -55,7 +55,7 @@ export default class App extends Component<Props> {
         />
         </View>
 
-        <View>
+        <View style={styles.listContainer}>
         {placesOutput}
         </View>
       </View>
@@ -81,7 +81,10 @@ const styles = StyleSheet.create({
    //   flex: 1,
       flexDirection: "row",
       justifyContent: "space-between"
-    }
+    },
 
+    listContainer: {
+    width:"100%"
+  }
     
 });
