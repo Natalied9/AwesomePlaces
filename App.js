@@ -1,63 +1,29 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, TextInput, Button} from 'react-native';
 
-import ListItem from './src/components/ListItem/ListItem';
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
+//import ListItem from './src/components/ListItem/ListItem';
+import PlaceUserInput from './src/components/PlaceUserInput/PlaceUserInput';
+import PlaceList from './src/components/PlaceList/PlaceList';
 
-});
-
-type Props = {};
 export default class App extends Component<Props> {
-  state= {
-    placeName: '',
-    places: []
-  };
+state = {
+  places: []
+};
 
-  //creates a method so this keyword applies to the class above. user types in value 
-  //in the text input and then it shows on the 
-  placeNameChangedHandler = val => {
-    this.setState({
-      placeName: val
-    });
-  }
-
-    placeSubmitHandler = () => {
-      if (this.state.placeName.trim() === "") {
-        return;
-      }
-
+placeAddedHandler = placeName => {
       this.setState(prevState => {
         return {
-          places: prevState.places.concat(prevState.placeName)
+          places: prevState.places.concat(placeName)
         };
-      });
-    };
+        });
+      };
+   
 
   render() {
-    const placesOutput = this.state.places.map((place, i) => (
-      <ListItem key={i} placeName={place} />
-     ));
-
     return (
       <View style={styles.container}>
-      <View style={styles.inputContainer}>
-
-        <TextInput
-        style={styles.textBorder}
-        value={this.state.placeName}
-        onChangeText={this.placeNameChangedHandler}
-        />
-        <Button 
-        title="add"
-        style={styles.placeButton}
-        onPress={this.placeSubmitHandler}
-        />
-        </View>
-
-        <View style={styles.listContainer}>
-        {placesOutput}
-        </View>
+        <PlaceUserInput onPlaceAdded={this.placeAddedHandler} />
+        <PlaceList places={this.state.places} />
       </View>
     );
   }
@@ -70,18 +36,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-
-
-  textBorder: {
-    width: 200, 
-    borderColor:"black", 
-    borderWidth: 1},
-
-    inputContainer :{
-   //   flex: 1,
-      flexDirection: "row",
-      justifyContent: "space-between"
-    },
 
     listContainer: {
     width:"80%"
