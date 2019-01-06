@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 
 const listItem = (props) => (
 	<View style={styles.listItem}> 
-		<Text>{props.placeName.toString()}</Text>
+		<Text>{props.placeName}</Text>
 	</View>
 	);
 

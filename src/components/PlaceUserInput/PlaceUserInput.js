@@ -16,7 +16,7 @@ class PlaceUserInput extends Component {
   };
  
  placeSubmitHandler = () => {
-      if (this.state.placeName.trim() === "") {
+      if (this.state.placeName.trim() === '') {
         return;
       }
 
@@ -34,7 +34,7 @@ class PlaceUserInput extends Component {
         <Button 
         title='add'
         style={styles.placeButton}
-        onPress={this.props.onPlaceAdded}
+        onPress={this.placeSubmitHandler}
         />
        
 </View>

@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, TextInput, Button} from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
-//import ListItem from './src/components/ListItem/ListItem';
 import PlaceUserInput from './src/components/PlaceUserInput/PlaceUserInput';
 import PlaceList from './src/components/PlaceList/PlaceList';
 
-export default class App extends Component<Props> {
+export default class App extends Component {
 state = {
   places: []
 };
