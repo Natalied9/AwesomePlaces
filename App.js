@@ -16,13 +16,43 @@ placeAddedHandler = placeName => {
         };
         });
       };
-   
+  
+  //we get the index of the element which is deleted and then update our state immutably,
+  //so that the places array is the places array without the item we just deleted
+placeDeletedHandler = index => {
+  //get the previous state because set state runs asynchronously
+  this.setState(prevState => {
+  //return an object which is merged with the state where the places array 
+  //(without the element we want to delete) should be.. so we can use the previous
+  //state places and with the filter method, a default js array method which will
+  //return a new array of all the elements that match the filter criteria
+  //as defined in the function we pass to filter
+  //SO, we will pass an arrow function to be executed on all elements in the
+  //places array 
+  return { places: prevState.places.filter((place, i) => {
+    //return result of check: if the index of element in array is not equal
+    //to the index we receive, then we want to return true because then the item 
+    //should stay in the array
+    return i !== index;
+    //return result of check: if the index of element in array is equal
+    //to the index we receive, then we want to return false and the item 
+    //gets deleted from the array so onItemDeleted will trigger this place
+    //delete handler and automatically pass on the index because that is what
+    //we basically emit in the placeList file - onItemDeleted
+   })
+  };
+  });
+  
+}
+
 
   render() {
     return (
       <View style={styles.container}>
         <PlaceUserInput onPlaceAdded={this.placeAddedHandler} />
-        <PlaceList places={this.state.places} />
+        <PlaceList 
+        places={this.state.places} 
+        onItemDeleted={this.placeDeletedHandler} />
       </View>
     );
   }
