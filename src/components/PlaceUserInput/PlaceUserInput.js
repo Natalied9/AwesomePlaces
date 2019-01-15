@@ -45,11 +45,16 @@ class PlaceUserInput extends Component {
 
 const styles = StyleSheet.create({
 	
- inputContainer :{
+ inputContainer: {
    //   flex: 1,
+   width: "100%",
    flexDirection: "row",
-   justifyContent: "space-between"
+   justifyContent: "space-between",
+   alignItems: "center"
     },
+
+
+
 
   textBorder: {
     width: 200, 

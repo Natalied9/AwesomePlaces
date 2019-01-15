@@ -4,6 +4,9 @@ import { StyleSheet, View } from 'react-native';
 import PlaceUserInput from './src/components/PlaceUserInput/PlaceUserInput';
 import PlaceList from './src/components/PlaceList/PlaceList';
 
+// explanation of 
+//https://appdividend.com/2018/07/30/react-native-create-delete-functionality/
+
 export default class App extends Component {
 state = {
   places: []
@@ -61,13 +64,17 @@ placeDeletedHandler = index => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    padding: 50,
+    width: '100%',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+
   },
 
     listContainer: {
-    width:"80%"
+    width:"80%",
+
   }
     
 });
