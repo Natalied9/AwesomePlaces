@@ -15,10 +15,13 @@ state = {
 placeAddedHandler = placeName => {
       this.setState(prevState => {
         return {
-          places: prevState.places.concat(placeName)
+          places: prevState.places.concat({
+            key: Math.random(), 
+            value: placeName
+        })
         };
-        });
-      };
+      });
+    };
   
   //we get the index of the element which is deleted and then update our state immutably,
   //so that the places array is the places array without the item we just deleted
