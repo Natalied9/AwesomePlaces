@@ -35,11 +35,11 @@ placeDeletedHandler = index => {
   //as defined in the function we pass to filter
   //SO, we will pass an arrow function to be executed on all elements in the
   //places array 
-  return { places: prevState.places.filter((place, i) => {
+  return { places: prevState.places.filter((place => {
     //return result of check: if the index of element in array is not equal
     //to the index we receive, then we want to return true because then the item 
     //should stay in the array
-    return i !== index;
+    return place.key !== key;
     //return result of check: if the index of element in array is equal
     //to the index we receive, then we want to return false and the item 
     //gets deleted from the array so onItemDeleted will trigger this place
@@ -49,7 +49,7 @@ placeDeletedHandler = index => {
   };
   });
   
-}
+};
 
 
   render() {
