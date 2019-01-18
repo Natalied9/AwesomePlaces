@@ -25,7 +25,7 @@ placeAddedHandler = placeName => {
   
   //we get the index of the element which is deleted and then update our state immutably,
   //so that the places array is the places array without the item we just deleted
-placeDeletedHandler = index => {
+placeDeletedHandler = key => {
   //get the previous state because set state runs asynchronously
   this.setState(prevState => {
   //return an object which is merged with the state where the places array 
@@ -35,7 +35,7 @@ placeDeletedHandler = index => {
   //as defined in the function we pass to filter
   //SO, we will pass an arrow function to be executed on all elements in the
   //places array 
-  return { places: prevState.places.filter((place => {
+  return { places: prevState.places.filter(place => {
     //return result of check: if the index of element in array is not equal
     //to the index we receive, then we want to return true because then the item 
     //should stay in the array
@@ -45,11 +45,10 @@ placeDeletedHandler = index => {
     //gets deleted from the array so onItemDeleted will trigger this place
     //delete handler and automatically pass on the index because that is what
     //we basically emit in the placeList file - onItemDeleted
-   })
+     })
+      };
+    });
   };
-  });
-  
-};
 
 
   render() {

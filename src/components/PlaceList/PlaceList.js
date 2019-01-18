@@ -15,7 +15,7 @@ const placeList = props => {
 		//retreiving from app.js, where in placeAddedHandler we assign
 		//place to a value
 		placeName={info.item.value} 
-		onItemPressed={() => props.onItemDeleted(i)}
+		onItemPressed={() => props.onItemDeleted(info.item.key)}
 		/>
 	)}
 		/>
