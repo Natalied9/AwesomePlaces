@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 
 import PlaceUserInput from './src/components/PlaceUserInput/PlaceUserInput';
 import PlaceList from './src/components/PlaceList/PlaceList';
+import placeImage from './src/assets/beautiful-beach.jpeg';
 
 // explanation of 
 //https://appdividend.com/2018/07/30/react-native-create-delete-functionality/
@@ -16,8 +17,11 @@ placeAddedHandler = placeName => {
       this.setState(prevState => {
         return {
           places: prevState.places.concat({
+            //needs a key, so math.random will generate a key for each object
+            //that is added to the list
             key: Math.random(), 
-            value: placeName
+            value: placeName,
+            image: placeImage
         })
         };
       });
@@ -36,15 +40,8 @@ placeDeletedHandler = key => {
   //SO, we will pass an arrow function to be executed on all elements in the
   //places array 
   return { places: prevState.places.filter(place => {
-    //return result of check: if the index of element in array is not equal
-    //to the index we receive, then we want to return true because then the item 
-    //should stay in the array
+    //return result of check: if the key in array is not equal
     return place.key !== key;
-    //return result of check: if the index of element in array is equal
-    //to the index we receive, then we want to return false and the item 
-    //gets deleted from the array so onItemDeleted will trigger this place
-    //delete handler and automatically pass on the index because that is what
-    //we basically emit in the placeList file - onItemDeleted
      })
       };
     });
