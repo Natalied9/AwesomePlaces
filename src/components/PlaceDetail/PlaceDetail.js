@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, View, Image, Text, Button } from 'react-native';
+import { Modal, View, Image, Text, Button, StyleSheet } from 'react-native';
 
 
 //for placeDetail to display something, I need to pass placeImage and place name on 
@@ -20,13 +20,13 @@ const placeDetail = props => {
 	<Modal> 
 	<View>
 		{modalContent}
-			<Button title='Delete'/>
-			<Button title='Close'/>
+			<Button title="Delete"/>
+			<Button title="Close"/>
 		</View>
 	</Modal>
 
 		);
-}
+};
 	
 
 
