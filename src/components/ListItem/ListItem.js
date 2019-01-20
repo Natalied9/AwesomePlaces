@@ -21,7 +21,10 @@ const styles = StyleSheet.create({
 	},
 
 	placeImage: {
-		marginRight: 8
+		marginRight: 8,
+		height: 60,
+		width: 80,
+		resizeMode: "cover"
 	}
 });
 	export default listItem;

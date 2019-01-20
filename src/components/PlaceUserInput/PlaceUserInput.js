@@ -19,7 +19,6 @@ class PlaceUserInput extends Component {
       if (this.state.placeName.trim() === '') {
         return;
       }
-
       this.props.onPlaceAdded(this.state.placeName);
     };
 
